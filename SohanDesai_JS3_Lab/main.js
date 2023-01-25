@@ -17,11 +17,13 @@ function getResults(query) {
     fetch(`${api.base}weather?q=${query}&units=metric&APPID=${api.key}`)
         .then(weather => {
             return weather.json();
-        }).then(displayResults);
+        }).then((response)=>{
+            displayResults(response)
+        });
 }
 
 function displayResults(weather) {
-    console.log(weather);
+    // console.log(weather);
     let city = document.querySelector('.location .city');
     city.innerText = `${weather.name}, ${weather.sys.country}`;
 
